@@ -1,7 +1,5 @@
 FROM node:lts
 
-RUN npm install --global yarn
-
 WORKDIR /app
 
 COPY ./package.json /app/
