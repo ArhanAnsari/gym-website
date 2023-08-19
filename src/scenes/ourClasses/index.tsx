@@ -7,6 +7,7 @@ import image5 from '@/assets/image5.png';
 import image6 from '@/assets/image6.png';
 import { motion } from "framer-motion";
 import HText from "@/shared/HText";
+import Class from "./Class";
 
 const classes: Array<ClassType> = [
 	{
@@ -50,7 +51,7 @@ type Props = {
 const OurClasses = (props: Props) => {
 	return (
 		<section id="our-classes" className="w-full bg-primary-100 py-40">
-			<motion.div onViewportEnter={() => props.setSelectedPage(SelectedPage.OurClasses)}>
+			<motion.div className="mx-auto w-5/6" onViewportEnter={() => props.setSelectedPage(SelectedPage.OurClasses)}>
 				<motion.div
 					className="mx-auto w-5/6"
 					initial="hidden"
@@ -71,7 +72,18 @@ const OurClasses = (props: Props) => {
 						</p>
 					</div>
 				</motion.div>
-				<div></div>
+				<div className="mt-10 h-[353px] w-full overflow-x-auto overflow-y-hidden">
+					<ul className="w-[2800px] whitespace-nowrap">
+						{classes.map((item: ClassType, index) => (
+							<Class
+								key={`${item.name}-${index}`}
+								name={item.name}
+								image={item.image}
+								description={item.description}
+							/>
+						))}
+					</ul>
+				</div>
 			</motion.div>
 		</section>
 	)
