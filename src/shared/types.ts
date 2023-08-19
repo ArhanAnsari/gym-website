@@ -14,5 +14,5 @@ export interface BenefitType {
 export interface ClassType {
 	name: string;
 	description: string;
-	image: JSX.Element;
+	image: string;
 }
