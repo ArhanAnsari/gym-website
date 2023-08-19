@@ -1,0 +1,30 @@
+version: "3.6"
+services:
+  gym-website:
+    build:
+      context: $PWD/../..
+      dockerfile: $PWD/gym-website/Dockerfile
+    restart: always
+    expose:
+      - "80"
+      - "443"
+    environment:
+      - VIRTUAL_HOST=evogym.gregsithole.com
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=evogym.gregsithole.com
+      - LETSENCRYPT_EMAIL=gregsithole@hotmail.co.za
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    expose:
+      - 80
+    depends_on:
+      - gym-website
+    links:
+      - gym-website
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
