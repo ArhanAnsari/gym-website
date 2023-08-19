@@ -17,4 +17,4 @@ EXPOSE 80
 
 # Serve
 ENTRYPOINT [ "serve" ]
-CMD [ "-s", "build", "-p", "80"]
+CMD [ "-s", "dist", "-p", "80"]
